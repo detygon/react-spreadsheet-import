@@ -123,6 +123,9 @@ export const ValidationStep = <T extends string>({ initialData, file }: Props<T>
             <Button variant="outline" size="sm" onClick={deleteSelectedRows}>
               {translations.validationStep.discardButtonTitle}
             </Button>
+            <Button variant="outline" size="sm" onClick={deleteSelectedRows}>
+              Télécharger le résultat
+            </Button>
             <Switch
               display="flex"
               alignItems="center"
