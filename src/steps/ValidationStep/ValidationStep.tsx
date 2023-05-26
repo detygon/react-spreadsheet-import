@@ -10,7 +10,7 @@ import { SubmitDataAlert } from "../../components/Alerts/SubmitDataAlert"
 import type { Data } from "../../types"
 import type { themeOverrides } from "../../theme"
 import type { RowsChangeData } from "react-data-grid"
-import * as XLSX from "xlsx"
+import * as XLSX from "xlsx-js-style"
 import { DownloadIcon } from "@chakra-ui/icons"
 
 type Props<T extends string> = {
@@ -62,13 +62,7 @@ export const ValidationStep = <T extends string>({ initialData, file }: Props<T>
       return { ...clone, s: { fill: { fgColor: { rgb: "E9E9E9" } } } }
     })
 
-    // const fileExtension = ".xlsx"
-    // const ws = XLSX.utils.json_to_sheet(exportData)
-    // const wb = XLSX.utils.book_new()
-
-    // XLSX.utils.book_append_sheet(wb, ws, "DEMANDE_EDITION_EATCI")
-    // XLSX.writeFile(wb, fileName + fileExtension)
-
+    // STEP 1: Create a new workbook
     const wb = XLSX.utils.book_new()
 
     // STEP 2: Create data rows and styles
@@ -163,7 +157,11 @@ export const ValidationStep = <T extends string>({ initialData, file }: Props<T>
             <Button variant="outline" size="sm" onClick={deleteSelectedRows}>
               {translations.validationStep.discardButtonTitle}
             </Button>
-            <Button  size="sm" leftIcon={<DownloadIcon />} onClick={() => downloadValidationResult(data, "eatci_result")}>
+            <Button
+              size="sm"
+              leftIcon={<DownloadIcon />}
+              onClick={() => downloadValidationResult(data, "eatci_result")}
+            >
               Télécharger
             </Button>
             <Switch
@@ -178,7 +176,8 @@ export const ValidationStep = <T extends string>({ initialData, file }: Props<T>
         </Box>
         <Box display="flex" justifyContent="space-between" alignItems="center" mb="2rem" flexWrap="wrap" gap="8px">
           <Heading as="h6" size="xs" color="red">
-            Le fichier contient des erreurs surlignées en rouge. Veuillez les corriger via cette interface ou télécharger le fichier pour le faire hors ligne.
+            Le fichier contient des erreurs surlignées en rouge. Veuillez les corriger via cette interface ou
+            télécharger le fichier pour le faire hors ligne.
           </Heading>
         </Box>
         <Box h={0} flexGrow={1}>
