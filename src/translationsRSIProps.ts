@@ -42,6 +42,9 @@ export const translations = {
     noRowsMessageWhenFiltered: "Aucune donnée contenant des erreurs",
     discardButtonTitle: "Supprimer les lignes sélectionnées",
     filterSwitchTitle: "Montrer seulement les erreurs",
+    downloadButtonTitle: "Télécharger",
+    errorHeading:
+      "Le fichier contient des erreurs surlignées en rouge. Veuillez les corriger via cette interface ou télécharger le fichier pour le faire hors ligne.",
   },
   alerts: {
     confirmClose: {
